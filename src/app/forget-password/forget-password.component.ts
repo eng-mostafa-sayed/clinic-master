@@ -27,12 +27,21 @@ export class ForgetPasswordComponent {
         .forgetpassword(this.forgetForm.value)
         .subscribe((data) => {
           console.log(data);
-          this.error = data.message;
-        }, (err) => {
-          console.log(err);
-        }
+          this.error = '';
+          this.forgetForm.reset();
+        });
+
+      // this._AuthService
+      //   .forgetpassword(this.forgetForm.value)
+      //   .subscribe((response) => {
+      //     console.log(response);
+      //     if (response.message == 'success') {
+      //       this._Router.navigateByUrl('/login');
+      //     } else {
+      //       alert(response.message);
+      //     }
+      //   });
     }
-  
   }
   constructor(private _AuthService: AuthService, private _Router: Router) {}
 
