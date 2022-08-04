@@ -1,0 +1,30 @@
+
+<h1 class="my-3">Login </h1>
+<form [formGroup]='loginForm' (ngSubmit)="submitLoginForm()">
+    <div class="my-2">
+        <label>user  Name</label>
+        <input formControlName='name' type="text" class="form-control my-2">
+       <div *ngIf="loginForm.get('name')?.errors !=null 
+       &&loginForm.get('name')?.touched" class="alert alert-danger mmt-2">
+        <p *ngIf="loginForm.get('name')?.errors?.['required'] ">Name is required</p>
+        <p *ngIf="loginForm.get('name')?.errors?.['minlength']"> minlength is 3</p>
+        <p *ngIf="loginForm.get('name')?.errors?.['maxlength']">Name maxlength is 10</p>
+       </div>
+    </div>
+    
+    
+    
+    <div class="my-2">
+        <label> password</label>
+        <input formControlName='password' type="password" class="form-control my-2">
+        <div *ngIf="loginForm.get('password')?.errors !=null 
+        &&loginForm.get('password')?.touched" class="alert alert-danger mmt-2">
+         <p *ngIf="loginForm.get('password')?.errors?.['required'] ">password is required</p>
+         <p *ngIf="loginForm.get('password')?.errors?.['pattern']"> minlength is 3</p>
+        </div>
+    </div>
+    
+    <button class="btn btn-primary me-2" type="submit">login</button>
+    <button class="btn btn-danger" type="submit" routerLink="forget">forget</button>
+
+</form>
