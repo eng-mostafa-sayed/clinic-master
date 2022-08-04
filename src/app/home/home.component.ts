@@ -8,7 +8,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class HomeComponent implements OnInit {
   constructor(private http: HttpClient) {}
-
+  arr: [] = [];
   ngOnInit(): void {
     const headers = {
       Authorization: `bearer ${localStorage.getItem('token')}`,
@@ -18,6 +18,7 @@ export class HomeComponent implements OnInit {
       .subscribe(
         (data) => {
           console.log(data);
+          this.arr = data;
         },
         (err) => {
           console.log(err);
